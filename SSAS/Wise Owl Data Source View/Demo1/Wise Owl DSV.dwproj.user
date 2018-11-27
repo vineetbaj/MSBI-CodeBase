@@ -3,7 +3,7 @@
     <Configuration>
       <Name>Development</Name>
       <Options>
-        <TargetServer>localhost</TargetServer>
+        <TargetServer>(local)</TargetServer>
         <TargetDatabase>Demo1</TargetDatabase>
         <StartObject>
           <ObjectId></ObjectId>

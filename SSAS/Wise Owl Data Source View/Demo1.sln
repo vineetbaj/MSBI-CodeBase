@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.106
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "Demo1", "Demo1\Demo1.dwproj", "{A80C8E25-15BF-4A2A-9CDD-AB40AE8764ED}"
+Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "Wise Owl DSV", "Demo1\Wise Owl DSV.dwproj", "{A80C8E25-15BF-4A2A-9CDD-AB40AE8764ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

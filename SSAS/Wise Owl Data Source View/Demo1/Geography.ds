@@ -6,8 +6,9 @@
   <ConnectionString>Provider=SQLNCLI11.1;Data Source=INFO\SQLEXPRESS;Integrated Security=SSPI;Initial Catalog=MAM</ConnectionString>
   <ConnectionStringSecurity>Unchanged</ConnectionStringSecurity>
   <ImpersonationInfo>
-    <ImpersonationMode>ImpersonateCurrentUser</ImpersonationMode>
-    <ImpersonationInfoSecurity>Unchanged</ImpersonationInfoSecurity>
+    <ImpersonationMode>ImpersonateAccount</ImpersonationMode>
+    <Account>info\infoobjects</Account>
+    <ImpersonationInfoSecurity>PasswordRemoved</ImpersonationInfoSecurity>
   </ImpersonationInfo>
   <Timeout>PT0S</Timeout>
 </DataSource>
