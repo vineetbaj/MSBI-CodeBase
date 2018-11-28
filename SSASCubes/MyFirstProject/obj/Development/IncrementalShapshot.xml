@@ -8,7 +8,7 @@
     <TransactionalDeployment>false</TransactionalDeployment>
     <PartitionDeployment>DeployPartitions</PartitionDeployment>
     <RoleDeployment>DeployRolesRetainMembers</RoleDeployment>
-    <ProcessingOption>DoNotProcess</ProcessingOption>
+    <ProcessingOption>Default</ProcessingOption>
     <OutputScript></OutputScript>
     <ImpactAnalysisFile></ImpactAnalysisFile>
     <ConfigurationSettingsDeployment>Deploy</ConfigurationSettingsDeployment>
@@ -61,7 +61,7 @@
       </ObjectSnapshot>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.Cube</Type>
-        <TimeStamp>CnV1iBFZy0xcRRvTRcaGO4/Sw9c=26/11/2018 17:57:2026/11/2018 14:16:42BjzV2Dql5oqTxlUdbP2QvUx/0x0=26/11/2018 14:16:4226/11/2018 14:16:42</TimeStamp>
+        <TimeStamp>fIpSWCOtP8KINsb6JOdbwHZJz4I=27/11/2018 11:46:3526/11/2018 14:16:42BjzV2Dql5oqTxlUdbP2QvUx/0x0=26/11/2018 14:16:4226/11/2018 14:16:42</TimeStamp>
         <ID>
           <String>InternetSales</String>
         </ID>
@@ -78,5 +78,5 @@
   </Snapshot>
   <AssemblyLocations />
   <ProcessingComplete>true</ProcessingComplete>
-  <LastDeployed>2018-11-26T12:27:24.376667Z</LastDeployed>
+  <LastDeployed>2018-11-27T06:16:39.66Z</LastDeployed>
 </DeploymentSnapshot>
