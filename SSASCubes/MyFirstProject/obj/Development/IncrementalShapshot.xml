@@ -8,7 +8,7 @@
     <TransactionalDeployment>false</TransactionalDeployment>
     <PartitionDeployment>DeployPartitions</PartitionDeployment>
     <RoleDeployment>DeployRolesRetainMembers</RoleDeployment>
-    <ProcessingOption>Default</ProcessingOption>
+    <ProcessingOption>DoNotProcess</ProcessingOption>
     <OutputScript></OutputScript>
     <ImpactAnalysisFile></ImpactAnalysisFile>
     <ConfigurationSettingsDeployment>Deploy</ConfigurationSettingsDeployment>
@@ -19,28 +19,21 @@
     <ObjectSnapshots>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.RelationalDataSource</Type>
-        <TimeStamp>Yfp4Y349hkHR9tVB6IUlP+jVnbk=26/11/2018 14:25:4226/11/2018 13:02:55</TimeStamp>
+        <TimeStamp>Yfp4Y349hkHR9tVB6IUlP+jVnbk=28/11/2018 17:50:1426/11/2018 13:02:55</TimeStamp>
         <ID>
           <String>AdventureWorksDW2014</String>
         </ID>
       </ObjectSnapshot>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.DataSourceView</Type>
-        <TimeStamp>ii1hdeDOPF+KtjpBgHXnUmiwhTA=26/11/2018 17:17:5526/11/2018 13:05:50</TimeStamp>
+        <TimeStamp>lcg8BJkmVIzj22EptSx4MIviV8Q=28/11/2018 17:39:4326/11/2018 13:05:50</TimeStamp>
         <ID>
           <String>Adventure Works DW2014</String>
         </ID>
       </ObjectSnapshot>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.Dimension</Type>
-        <TimeStamp>z4LPWzj3/H25MlcH9RU5pSbWLDI=26/11/2018 14:11:3526/11/2018 14:09:38</TimeStamp>
-        <ID>
-          <String>Dim Product</String>
-        </ID>
-      </ObjectSnapshot>
-      <ObjectSnapshot>
-        <Type>Microsoft.AnalysisServices.Dimension</Type>
-        <TimeStamp>0jQWVv5v9LhqDUJ8+ETigJb05NA=26/11/2018 15:45:2026/11/2018 14:10:46</TimeStamp>
+        <TimeStamp>xRtneMz4o1V2WN4ypjrbvJdu0EI=29/11/2018 12:02:3126/11/2018 14:10:46</TimeStamp>
         <ID>
           <String>Dim Date</String>
         </ID>
@@ -60,8 +53,15 @@
         </ID>
       </ObjectSnapshot>
       <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>z4LPWzj3/H25MlcH9RU5pSbWLDI=26/11/2018 14:11:3526/11/2018 14:09:38</TimeStamp>
+        <ID>
+          <String>Dim Product</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.Cube</Type>
-        <TimeStamp>fIpSWCOtP8KINsb6JOdbwHZJz4I=27/11/2018 11:46:3526/11/2018 14:16:42BjzV2Dql5oqTxlUdbP2QvUx/0x0=26/11/2018 14:16:4226/11/2018 14:16:42</TimeStamp>
+        <TimeStamp>Jql/inKx3euNUeyMYfISjwqz+FY=29/11/2018 12:22:0226/11/2018 14:16:42BjzV2Dql5oqTxlUdbP2QvUx/0x0=29/11/2018 12:02:3126/11/2018 14:16:42</TimeStamp>
         <ID>
           <String>InternetSales</String>
         </ID>
@@ -78,5 +78,5 @@
   </Snapshot>
   <AssemblyLocations />
   <ProcessingComplete>true</ProcessingComplete>
-  <LastDeployed>2018-11-27T06:16:39.66Z</LastDeployed>
+  <LastDeployed>2018-11-29T08:57:31.183333Z</LastDeployed>
 </DeploymentSnapshot>

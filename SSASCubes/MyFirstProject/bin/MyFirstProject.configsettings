@@ -13,9 +13,6 @@
     </DataSources>
     <Dimensions>
       <Dimension>
-        <ID>Dim Product</ID>
-      </Dimension>
-      <Dimension>
         <ID>Dim Date</ID>
       </Dimension>
       <Dimension>
@@ -23,6 +20,9 @@
       </Dimension>
       <Dimension>
         <ID>Employee</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Dim Product</ID>
       </Dimension>
     </Dimensions>
     <Cubes>
