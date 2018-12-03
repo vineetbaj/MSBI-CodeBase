@@ -6,13 +6,19 @@ Select
 	{[Measures].[Sales Amount]} on COLUMNS,
 	NON Empty(ORDER({[Product].[Product Key].ALLMEMBERS},[Measures].[Sales Amount],bdesc)) on rows
 from [InternetSales]
-
+	
+	-- Another Example from different cube
+	-- Gets the Total Sales Amount of each month sorted by Month,Year
+select 
+   NON EMPTY{[Measures].[Sales Amount]} on columns,
+   NON EMPTY{([Due Date].[Calendar Year].children,(order({[Due Date].[Month Number Of Year].MEMBERS},[Due Date].[Calendar Year],bdesc)))} on rows
+from [ProductSalesCube]
 
 //AddCalculatedMembers
 SELECT   
    AddCalculatedMembers(  
-      {[Measures].Members}  
-      )-[Measures].Members ON COLUMNS  
+      {[Measures].Members}  //Gets all the columns - (All columns excepts calculated columns) = Calculated column  
+      )-[Measures].Members ON COLUMNS   
 FROM [InternetSales]   
 
 
@@ -49,4 +55,24 @@ WITH MEMBER MEASURES.COUNTTUPLE AS
 COUNT(([Measures].[Sales Amount], [Order Date].[DateHierarchy].[Calendar Year].&[2005]))  
 SELECT MEASURES.COUNTTUPLE ON 0  
 FROM [InternetSales]
+
+//Miscellaneous
+  --Fetch Sales Amount for Each Customer with its gender
+select
+  NON EMPTY{([Dim Customer].[Customer Key].ALLMEMBERS)} on columns,
+  NON EMPTY{([Measures].[Sales Amount],[Dim Customer].[Gender].ALLMEMBERS)} on rows
+from [ProductSalesCube]
+
+  --Fetch Sales Amount by Week, Year and Semester
+ SELECT 
+      NON EMPTY { ([Measures].[Sales Amount],[Due Date].[Calendar Year].CHildren,[Due Date].[Calendar Semester].CHildren)  } ON COLUMNS,
+      NON EMPTY {  [Due Date].[Week Number Of Year].CHildren } ON ROWS
+ FROM [ProductSalesCube]
+
+ --Fetch Sales Amount by first Name
+ select 
+   {[Measures].[Sales Amount]} on columns,
+   exists({[Dim Customer].[First Name].MEMBERS},{[Dim Customer].[First Name].MEMBERS}) on rows
+from [ProductSalesCube]
+
 
