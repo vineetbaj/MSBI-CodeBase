@@ -2,6 +2,7 @@
 									-----------------
 
 //Order By in MDX
+-----------------
 Select 
 	{[Measures].[Sales Amount]} on COLUMNS,
 	NON Empty(ORDER({[Product].[Product Key].ALLMEMBERS},[Measures].[Sales Amount],bdesc)) on rows
@@ -15,6 +16,7 @@ select
 from [ProductSalesCube]
 
 //AddCalculatedMembers
+----------------------
 SELECT   
    AddCalculatedMembers(  
       {[Measures].Members}  //Gets all the columns - (All columns excepts calculated columns) = Calculated column  
@@ -23,6 +25,7 @@ FROM [InternetSales]
 
 
 //Aggregate Functions
+---------------------
 -- Aggregate Member set
 WITH
     MEMBER [Order Date].[DateHierarchy].[All sales] AS Aggregate([Order Date].[DateHierarchy].[Calendar Year])
@@ -56,7 +59,33 @@ COUNT(([Measures].[Sales Amount], [Order Date].[DateHierarchy].[Calendar Year].&
 SELECT MEASURES.COUNTTUPLE ON 0  
 FROM [InternetSales]
 
+
+//Conditionals
+--------------
+
+--FILTER
+	--Only those Customer results will be shown where the Sales Amount is greater than 7000
+select
+	NON EMPTY(Filter({([Dim Customer].[Customer Key].ALLMEMBERS)},[Measures].[Sales Amount]>7000)) on columns,
+	NON EMPTY{([Measures].[Sales Amount],[Dim Customer].[Gender].ALLMEMBERS)} on rows
+from [ProductSalesCube]
+
+
+--With & where
+with
+	Member [Measures].[Test] as 
+	iif([Measures].[Sales Amount]>7000,[Measures].[Sales Amount],null)
+select
+	NON EMPTY {[Dim Customer].[Customer Key].ALLMEMBERS} on columns,
+	NON EMPTY{([Dim Customer].[Gender].ALLMEMBERS)} on rows
+from [ProductSalesCube]
+where [Measures].[Test]
+
+--FROM
+
 //Miscellaneous
+---------------
+
   --Fetch Sales Amount for Each Customer with its gender
 select
   NON EMPTY{([Dim Customer].[Customer Key].ALLMEMBERS)} on columns,
@@ -65,14 +94,13 @@ from [ProductSalesCube]
 
   --Fetch Sales Amount by Week, Year and Semester
  SELECT 
-      NON EMPTY { ([Measures].[Sales Amount],[Due Date].[Calendar Year].CHildren,[Due Date].[Calendar Semester].CHildren)  } ON COLUMNS,
+      NON EMPTY { ([Due Date].[Calendar Year].CHildren,[Due Date].[Calendar Semester].CHildren)  } ON COLUMNS,
       NON EMPTY {  [Due Date].[Week Number Of Year].CHildren } ON ROWS
  FROM [ProductSalesCube]
+ where [Measures].[Sales Amount]
 
  --Fetch Sales Amount by first Name
  select 
    {[Measures].[Sales Amount]} on columns,
    exists({[Dim Customer].[First Name].MEMBERS},{[Dim Customer].[First Name].MEMBERS}) on rows
 from [ProductSalesCube]
-
-
