@@ -86,9 +86,10 @@ where [Measures].[Test]
 ---------------
 
   --Fetch Sales Amount for Each Customer with its gender
+With Member [Dim Customer].[Gender].[Status] As iif([Dim Customer].[Gender].&[M],iif([Dim Customer].[Gender].&[F],'ALL','M'),'F')
 select
-  NON EMPTY{([Dim Customer].[Customer Key].ALLMEMBERS)} on columns,
-  NON EMPTY{([Measures].[Sales Amount],[Dim Customer].[Gender].ALLMEMBERS)} on rows
+  NON EMPTY {([Measures].[Sales Amount],[Dim Customer].[Customer Key].ALLMEMBERS)} on columns,
+  {[Dim Customer].[Gender].ALLMEMBERS} on rows
 from [ProductSalesCube]
 
   --Fetch Sales Amount by Week, Year and Semester
