@@ -104,3 +104,46 @@ from [ProductSalesCube]
    {[Measures].[Sales Amount]} on columns,
    exists({[Dim Customer].[First Name].MEMBERS},{[Dim Customer].[First Name].MEMBERS}) on rows
 from [ProductSalesCube]
+
+
+// Prev Member tasks
+--------------------
+
+
+--without analysis
+SELECT 
+NON EMPTY { [Measures].[Sales Amount], [Measures].[Freight] } ON COLUMNS, 
+NON EMPTY { ([Due Date].[English Month Name].[English Month Name].ALLMEMBERS ) } ON ROWS 
+FROM [ProductSalesCube]
+
+
+--with intermediate analysis
+with member [Measures].[Count] as iif([Measures].[Sales Amount]=0,
+  ([Due Date].[English Month Name].prevmember)
+/*([Measures].[Sales Amount].prevmember)*/--[Measures].[Freight]/100*[Measures].[Sales Amount].prevmember+[Measures].[Sales Amount].prevmember
+,[Measures].[Sales Amount])
+member [Measures].[Interest] as  [Measures].[Freight]
+SELECT 
+NON EMPTY { [Measures].[Count], [Measures].[Interest] } ON COLUMNS, 
+NON EMPTY ({[Due Date].[English Month Name].[English Month Name].ALLMEMBERS}) ON ROWS 
+FROM [ProductSalesCube]
+
+--with analysis
+with member [Measures].[Count] as iif([Measures].[Sales Amount]=0,
+ -- ([Due Date].[English Month Name].prevmember)
+/*([Measures].[Sales Amount].prevmember)*/[Measures].[Freight]/100*[Due Date].[English Month Name].prevmember+[Due Date].[English Month Name].prevmember
+,[Measures].[Sales Amount])
+member [Measures].[Interest] as  [Measures].[Freight]
+SELECT 
+NON EMPTY { [Measures].[Count], [Measures].[Interest] } ON COLUMNS, 
+NON EMPTY ({[Due Date].[English Month Name].[English Month Name].ALLMEMBERS}) ON ROWS 
+FROM [ProductSalesCube]
+
+--Cumulativeanalysis
+with member [Measures].[Count] as [Measures].[Sales Amount]
+member [Measures].[Cumulative] as  ([Due Date].[English Month Name].prevmember+[Measures].[Sales Amount])
+SELECT 
+NON EMPTY { [Measures].[Cumulative],[Measures].[Count]  } ON COLUMNS, 
+NON EMPTY ({[Due Date].[English Month Name].[English Month Name].ALLMEMBERS}) ON ROWS 
+FROM [ProductSalesCube]
+
