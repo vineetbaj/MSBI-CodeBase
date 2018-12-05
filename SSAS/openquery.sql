@@ -27,7 +27,8 @@ exec [dbo].[SP_FetchDataFromCube]
 
 
 ------------------------------------------------------------------------------------------------------------------
---For created a linked server to a same instance we need to create a loopback linked server instance.
+--For creating a linked server to a same instance we need to create a loopback linked server instance.
+--Creating a linekd server by code.
 EXEC master.dbo.sp_addlinkedserver
 @server = N'SSASSRVR', -- name of linked server
 @srvproduct=N'MSOLAP',
