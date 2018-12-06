@@ -131,7 +131,7 @@ FROM [ProductSalesCube]
 --with analysis
 with member [Measures].[Count] as iif([Measures].[Sales Amount]=0,
  -- ([Due Date].[English Month Name].prevmember)
-/*([Measures].[Sales Amount].prevmember)*/[Measures].[Freight]/100*[Due Date].[English Month Name].prevmember+[Due Date].[English Month Name].prevmember
+[Measures].[Freight]/100*[Due Date].[English Month Name].prevmember+[Due Date].[English Month Name].prevmember
 ,[Measures].[Sales Amount])
 member [Measures].[Interest] as  [Measures].[Freight]
 SELECT 
@@ -143,7 +143,7 @@ FROM [ProductSalesCube]
 with member [Measures].[Count] as [Measures].[Sales Amount]
 member [Measures].[Cumulative] as  ([Due Date].[English Month Name].prevmember+[Measures].[Sales Amount])
 SELECT 
-NON EMPTY { [Measures].[Cumulative],[Measures].[Count]  } ON COLUMNS, 
+NON EMPTY { [Measures].[Count],[Measures].[Cumulative]  } ON COLUMNS, 
 NON EMPTY ({[Due Date].[English Month Name].[English Month Name].ALLMEMBERS}) ON ROWS 
 FROM [ProductSalesCube]
 

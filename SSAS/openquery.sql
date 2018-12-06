@@ -9,18 +9,21 @@
 
 /*Stores Procedure linking to a SSAS instance*/
 
-ALTER PROCEDURE [dbo].[SP_FetchDataFromCube]
+alter PROCEDURE [dbo].[SP_FetchDataFromCube]
 AS
 BEGIN
-	declare @mdx_query as varchar(max), @open_query as nvarchar(max), @linked_server as varchar(max);
+	declare @mdx_query as varchar(max), @open_query as nvarchar(max), @linked_server as varchar(max),@ren varchar(max);
+	create table #test (names varchar(max),name2 varchar(max));
 	set @mdx_query = 'select 
 					   { [Measures].[Sales Amount] } on columns,
 					   exists({[Dim Customer].[First Name].MEMBERS},{[Dim Customer].[First Name].MEMBERS}) on rows
 					  from [ProductSalesCube]'
 	set @linked_server = N'TS'
-	set @open_query = 'SELECT * FROM OpenQuery ("'+@linked_server+'",'''+ @mdx_query + ''')'
-	--print @open_query
+	set @open_query = 'insert into #test SELECT * FROM OpenQuery ("'+@linked_server+'",'''+ @mdx_query + ''')'
+	set @ren = 'select * from #test where names like ''a%'''
+	print @open_query
 	execute sp_executesql @open_query
+	exec (@ren)
 END
 
 exec [dbo].[SP_FetchDataFromCube]
