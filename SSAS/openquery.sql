@@ -20,8 +20,14 @@ BEGIN
 					  from [ProductSalesCube]'
 	set @linked_server = N'TS'
 	set @open_query = 'insert into #test SELECT * FROM OpenQuery ("'+@linked_server+'",'''+ @mdx_query + ''')'
-	set @ren = 'select * from #test where names like ''a%'''
-	print @open_query
+	set @ren = 'select names,
+				case 
+				when name2 = ''0'' then lag(name2) over (order by names)
+				else name2
+				end as ''Value''
+				from #test where names like ''a%'''
+	--print @open_query
+	--print @ren
 	execute sp_executesql @open_query
 	exec (@ren)
 END

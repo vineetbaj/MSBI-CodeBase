@@ -109,7 +109,6 @@ from [ProductSalesCube]
 // Prev Member tasks
 --------------------
 
-
 --without analysis
 SELECT 
 NON EMPTY { [Measures].[Sales Amount], [Measures].[Freight] } ON COLUMNS, 
@@ -147,3 +146,9 @@ NON EMPTY { [Measures].[Count],[Measures].[Cumulative]  } ON COLUMNS,
 NON EMPTY ({[Due Date].[English Month Name].[English Month Name].ALLMEMBERS}) ON ROWS 
 FROM [ProductSalesCube]
 
+-- to get the unitsIn,unitsOut,Unit Balance,unit cost by year
+with member [Measures].[Average Units] as ([Measures].[Units In]+[Measures].[Units Out])/2
+select 
+ ([Due Date].[Calendar Year].children,{[Measures].[Units In],[Measures].[Units Out],[Measures].[Average Units],[Measures].[Units Balance]}) on columns,
+ {([Dim Product].[Product Key].children)} on rows
+from [ProductSalesCube]

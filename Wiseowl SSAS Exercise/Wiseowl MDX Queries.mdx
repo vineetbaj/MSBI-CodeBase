@@ -1,0 +1,26 @@
+							/*Solutions to similar logic*/
+							------------------------------
+
+-- Wiseowl Calculation
+with member [Measures].[Average Units] as ([Measures].[Units In]+[Measures].[Units Out])/2
+select 
+ ([Due Date].[Calendar Year].children,{[Measures].[Units In],[Measures].[Units Out],[Measures].[Average Units],[Measures].[Units Balance]}) on columns,
+ {([Dim Product].[Product Key].children)} on rows
+from [ProductSalesCube]
+
+-- WiseOwl MDX Harder Than Average
+select
+([Measures].[Sales Amount],{[Due Date].[Hierarchy].[Calendar Year].&[2011],[Due Date].[Hierarchy].[Calendar Year].&[2012]}) on columns,
+{[Dim Customer].[Customer Key].children} on rows
+from [ProductSalesCube]
+
+--Wiseowl expressions First
+select
+([Measures].[Sales Amount]) on columns,
+{([Due Date].[Hierarchy].[Calendar Year],[Due Date].[English Month Name].children) } on rows
+from [ProductSalesCube]
+
+--Wiseowl expressions Second
+--similar concept of hierarchy with a bsic difference calculaetd measure
+
+--Wiseowl expressions Third
