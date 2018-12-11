@@ -152,3 +152,10 @@ select
  ([Due Date].[Calendar Year].children,{[Measures].[Units In],[Measures].[Units Out],[Measures].[Average Units],[Measures].[Units Balance]}) on columns,
  {([Dim Product].[Product Key].children)} on rows
 from [ProductSalesCube]
+
+-- Showing sales for last 8 months of 2011
+select 
+ { [Measures].[Sales Amount] } on columns,
+ { tail([Due Date].[Month Number Of Year].children,8) } on rows
+  from [ProductSalesCube]
+  where [Due Date].[Hierarchy].[Calendar Year].&[2011]
