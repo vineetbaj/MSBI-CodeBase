@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.106
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "Basic Transformation", "Basic Transformation\Basic Transformation.dtproj", "{9B15F92F-7C3A-437E-95F4-5948C903767A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9B15F92F-7C3A-437E-95F4-5948C903767A}.Development|Default.ActiveCfg = Development
+		{9B15F92F-7C3A-437E-95F4-5948C903767A}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B0781AF7-7B3A-44BA-807B-6C96ECAF2A6B}
+	EndGlobalSection
+EndGlobal
