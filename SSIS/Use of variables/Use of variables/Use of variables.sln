@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.106
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "Use of variables", "Use of variables.dtproj", "{54BD5BF9-CE9D-4DCB-ACF9-F417547B4EBE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{54BD5BF9-CE9D-4DCB-ACF9-F417547B4EBE}.Development|Default.ActiveCfg = Development
+		{54BD5BF9-CE9D-4DCB-ACF9-F417547B4EBE}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4063C7E3-FEB8-4C04-8BE8-023613B7E019}
+	EndGlobalSection
+EndGlobal
