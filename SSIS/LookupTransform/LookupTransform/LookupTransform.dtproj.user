@@ -17,5 +17,21 @@
         </ParameterConfigurationSensitiveValues>
       </Options>
     </Configuration>
+    <Configuration>
+      <Name>test</Name>
+      <Options>
+        <UserIDs />
+        <UserPasswords />
+        <OfflineMode>false</OfflineMode>
+        <ProgressReporting>true</ProgressReporting>
+        <ParameterConfigurationSensitiveValues>
+          <ConfigurationSetting>
+            <Id>LastModifiedTime</Id>
+            <Name>LastModifiedTime</Name>
+            <Value xsi:type="xsd:dateTime">2018-12-17T12:12:47.9108582Z</Value>
+          </ConfigurationSetting>
+        </ParameterConfigurationSensitiveValues>
+      </Options>
+    </Configuration>
   </Configurations>
 </DataTransformationsUserConfiguration>
