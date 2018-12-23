@@ -86,7 +86,7 @@ end
 go
 
 
-		------------------------------------------------			Execution Statements		------------------------------------------------------			
+		--------------------------------------------- 	Execution Statements.   ------------------------------------------------------			
 
 declare @table_name varchar(50);
 exec rand_tablefill @table_name = '#temptable3' ,@num_records=35;
