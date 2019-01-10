@@ -3,7 +3,7 @@
 ---------------------------------------------------Difficulty : Easy-----------------------------------------------------
 
 /* Revising the Select Query I*/
-select * from CITY where POPULATION>100000 and COUNTRYCODE = 'USA';
+select * from CITY where POPULATION>100000 and COUNTRYCODE = 'USA'
 
 /* Revising the Select Query II */
 select NAME from CITY where POPULATION>120000 and COUNTRYCODE='USA'
