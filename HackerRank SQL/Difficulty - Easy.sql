@@ -1,26 +1,26 @@
-------------------------------------------------------------------------------------------------------------
----------------------------------- Hackerrank SQL Exercise -------------------------------------------------
-------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------- Hackerrank SQL Exercise -------------------------------------------------
+---------------------------------------------------Difficulty : Easy-----------------------------------------------------
 
-// Revising the Select Query I
+/* Revising the Select Query I*/
 select * from CITY where POPULATION>100000 and COUNTRYCODE = 'USA';
 
-// Revising the Select Query II 
+/* Revising the Select Query II */
 select NAME from CITY where POPULATION>120000 and COUNTRYCODE='USA'
 
-// Select All
+/* Select All */
 select * from CITY;
 
-//Select By ID
+/*Select By ID */
 select * from CITY where id=1661
 
-//Japanese Cities' Attributes
+/*Japanese Cities' Attributes*/
 select * from CITY where COUNTRYCODE='JPN'
 
-//Japanese Cities' Names
+/*Japanese Cities' Names*/
 select NAME from CITY where COUNTRYCODE='JPN'
 
-//Weather Observation Station 
+/*Weather Observation Station*/ 
 -- 1
 SELECT CITY,STATE FROM STATION
 
@@ -74,16 +74,16 @@ select top(1) cast(LAT_N as decimal(18,4)) from STATION where LAT_N>38.7780 orde
 select cast(LONG_W AS DECIMAL(18,4)) FROM STATION 
 WHERE LAT_N = (SELECT TOP(1) LAT_N FROM STATION WHERE LAT_N >38.7780 ORDER BY LAT_N )
 
-//Higher Than 75 Marks
+/*Higher Than 75 Marks */
 SELECT Name FROM STUDENTS WHERE Marks > 75 ORDER BY RIGHT(Name, 3), ID;
 
-//Employee Names
+/*Employee Names */
 select name from Employee  order by name
 
-//Employee Salaries
+/*Employee Salaries */
 select name from Employee where salary > 2000 and months<10 order by employee_id;
 
-//Type of Triangle
+/*Type of Triangle */
 
 SELECT
   CASE 
@@ -94,50 +94,50 @@ SELECT
   END 
 FROM TRIANGLES
 
-//Revising Aggregations - The Count Function
+/*Revising Aggregations - The Count Function */
 select count(NAME) from CITY where POPULATION>100000;
 
-//Revising Aggregations - The Sum Function
+/*Revising Aggregations - The Sum Function */
 select sum(POPULATION) from CITY where DISTRICT='California'
 
-//Revising Aggregations - Averages
+/*Revising Aggregations - Averages */
 select avg(POPULATION) from CITY where DISTRICT='California'
 
-//Average Population
+/*Average Population */
 select avg(POPULATION) FROM CITY
 
-//Japan Population
+/*Japan Population */
 SELECT sum(POPULATION) FROM CITY WHERE COUNTRYCODE='JPN'
 
-//Population Density Difference
+/*Population Density Difference */
 select max(POPULATION)-MIN(POPULATION) from CITY
 
-//The Blunder
+/*The Blunder*/
 SELECT CEILING( CAST(AVG(Salary) AS DECIMAL) - AVG(CAST(REPLACE(Salary, 0, '') AS DECIMAL)-1) ) FROM EMPLOYEES
 
-//Top Earners
+/*Top Earners*/
 SELECT MAX(salary * months), COUNT(*) FROM Employee WHERE salary * months = (SELECT MAX(salary * months) FROM Employee);
 
-//Asian Population
+/*Asian Population */
 select sum(CITY.POPULATION) from CITY
 join COUNTRY on (CITY.CountryCode = COUNTRY.Code) where CONTINENT='Asia'
 
-//African Cities
+/*African Cities*/
 select CITY.NAME from CITY
 join COUNTRY on (CITY.CountryCode = COUNTRY.Code) where CONTINENT='Africa'
 
-//Average Population of Each Continent
+/*Average Population of Each Continent */
 select COUNTRY.CONTINENT,avg(CITY.POPULATION) from CITY
 join COUNTRY on (CITY.CountryCode = COUNTRY.Code) 
 group by COUNTRY.CONTINENT
 
-//Draw The Triangle 1
+/*Draw The Triangle 1 */
 with cte as
 (select 20 as i union all
  select i-1 as i from cte where i > 0)
 select REPLICATE('* ', i) from cte
 
-//Draw The Triangle 2
+/*Draw The Triangle 2 */
 with cte as
 (select 1 as i union all
  select i+1 as i from cte where i < 20)
