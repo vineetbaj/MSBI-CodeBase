@@ -1,4 +1,6 @@
--- SP to populate the a given table with random data with their respective data types.
+-------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------- T-SQL Tasks -------------------------------------------------------
+--------------------SP to populate the a given table with random data with their respective data types.------------------ 
 
 create procedure rand_tablefill
 @table_name varchar(50),
