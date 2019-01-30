@@ -1,0 +1,24 @@
+---------------------------AN EXAMPLE TO USE RANK() IN MDX---------------------
+
+WITH
+ SET [CategorySET] AS
+   Order
+   (
+    ( [Dimension_1].[Attr_1].[Attr_1] * [Dimension_2].[Attr_2].[Attr_2]),
+    ([Measures].[Count] * [Measures].[Amount])
+    ,BDESC
+   )
+ MEMBER [Measures].[RowNumber] AS
+   Rank
+   (
+ ([Dimension_1].[Attr_1].currentMember,[Dimension_2].[Attr_2].currentMember)
+     ,[CategorySET]
+   )
+SELECT
+non empty {
+   [Measures].[Count], [Measures].[Amount],[Measures].[RowNumber]
+ } ON COLUMNS,
+non empty {
+   [CategorySET]
+ } ON ROWS
+FROM [cube]
