@@ -42,12 +42,12 @@ EXEC master.dbo.sp_addlinkedserver
 @server = N'SSASSRVR', -- name of linked server
 @srvproduct=N'MSOLAP',
 @provider=N'MSOLAP', -- see list of providers available on SQL Server under Linked Server node in SSMS Object Browser
-@datasrc=N'INFO', -- machine or instance name  that host Analysis Services
+@datasrc=N'****', -- machine or instance name  that host Analysis Services
 @catalog=N'[ProductSales]' 
 
 EXEC master.dbo.sp_addlinkedsrvlogin 
 @rmtsrvname=N'SSASSRVR',
 @useself=N'False',
 @locallogin=NULL,
-@rmtuser=N'info\infoobjects',
-@rmtpassword='infoobjects'
+@rmtuser=N'*****',
+@rmtpassword='******'
