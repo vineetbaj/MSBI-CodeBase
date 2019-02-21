@@ -8,11 +8,25 @@ from Person p
 left join Address a on p.PersonId=a.PersonId
 
 --Second highest
-with cte as (
- select top 2 Salary from Employee
-    order by Salary desc
-)select top 1 Salary from cte
-order by Salary
+declare @Salary int;
+SELECT @Salary = Salary
+FROM (
+       SELECT
+         [Salary],
+         (DENSE_RANK()
+         OVER
+         (
+           ORDER BY [Salary] DESC)) AS rnk
+       FROM Employee
+       GROUP BY Salary
+     ) AS A
+WHERE A.rnk = 2
+
+select 
+case 
+when @Salary is not null then @Salary
+else null 
+end as 'SecondHighestSalary'
 
 --Nth highest Salary
 CREATE FUNCTION getNthHighestSalary(@N INT) RETURNS INT AS
@@ -23,7 +37,16 @@ BEGIN
            (select dense_rank() over (order by salary desc) as Ranks, ID, Salary
             from Employee) as a
             where a.Ranks = @N
-    
-    )
-        
+    )    
 END
+
+--Not boring movies
+select * from cinema
+where description <> 'boring'
+and id % 2 <> 0 
+order by rating desc
+
+--Rank Scores
+select Score,dense_rank() over(order by Score desc) Rank
+from Scores
+order by Score desc
