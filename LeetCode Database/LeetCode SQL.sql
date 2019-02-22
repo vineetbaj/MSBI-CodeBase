@@ -50,3 +50,21 @@ order by rating desc
 select Score,dense_rank() over(order by Score desc) Rank
 from Scores
 order by Score desc
+
+--Consecutive Numbers
+select distinct Num as consecutiveNums
+from 
+(
+    select Num,sum(c) over (order by Id) as step 
+    from 
+        (
+            select id, num, 
+            case 
+            when LAG(Num) OVER     (order by id)- Num = 0 then 0 
+            else 1
+            end as c
+            from logs
+        ) i
+) o
+group by Num,step
+having count(*)>=3
