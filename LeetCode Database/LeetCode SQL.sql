@@ -68,3 +68,18 @@ from
 ) o
 group by Num,step
 having count(*)>=3
+
+--Employees Earning More Than Their Managers
+select m.Name as 'Employee' from Employee e
+join Employee m on e.Id=m.ManagerId
+where m.Salary>e.Salary
+
+--Duplicate Emails
+select distinct p.Email from Person p
+join Person t on p.Id <> T.Id
+where p.Email=t.Email
+
+--Customers Who Never Order
+select Name as 'Customers' from Customers c
+left join Orders o on c.Id = o.CustomerId
+where o.Id is null
