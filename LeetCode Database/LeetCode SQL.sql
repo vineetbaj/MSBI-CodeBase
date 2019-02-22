@@ -83,3 +83,22 @@ where p.Email=t.Email
 select Name as 'Customers' from Customers c
 left join Orders o on c.Id = o.CustomerId
 where o.Id is null
+
+--Department Highest Salary
+SELECT
+    Department.Name AS Department,
+    Employee.Name AS Employee,
+    Employee.Salary AS Salary
+FROM
+    (
+    SELECT MAX(Salary) AS Salary, DepartmentId
+    FROM Employee
+    GROUP BY DepartmentId
+    ) Emp
+    
+    JOIN Department
+    ON Department.Id = Emp.DepartmentId
+    
+    JOIN Employee
+    ON Employee.Salary = Emp.Salary
+    AND Employee.DepartmentId = Emp.DepartmentId
