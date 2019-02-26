@@ -118,3 +118,6 @@ join Department d on e.DepartmentId = d.Id)
 select dname as 'Department',Name as 'Employee',Salary from cte
 where rn<=3
 order by did,Salary desc
+
+--Delete Duplicate Emails
+DELETE p from Person p, Person q where p.Id>q.Id AND q.Email=p.Email 
