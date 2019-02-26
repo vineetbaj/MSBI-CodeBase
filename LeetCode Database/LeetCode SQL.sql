@@ -102,3 +102,10 @@ FROM
     JOIN Employee
     ON Employee.Salary = Emp.Salary
     AND Employee.DepartmentId = Emp.DepartmentId
+
+--Swap Salary
+update salary
+set sex = case
+when sex='m' then 'f'
+else 'm'
+end
