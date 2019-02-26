@@ -109,3 +109,12 @@ set sex = case
 when sex='m' then 'f'
 else 'm'
 end
+
+--Department Top Three Salaries
+with cte as
+(select e.Id,e.Name,Salary,d.Name as 'dname',d.Id as 'did',dense_rank() over (partition by DepartmentId order by Salary desc) rn
+from Employee e
+join Department d on e.DepartmentId = d.Id)
+select dname as 'Department',Name as 'Employee',Salary from cte
+where rn<=3
+order by did,Salary desc
