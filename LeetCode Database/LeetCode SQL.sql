@@ -121,3 +121,8 @@ order by did,Salary desc
 
 --Delete Duplicate Emails
 DELETE p from Person p, Person q where p.Id>q.Id AND q.Email=p.Email 
+
+--Rising Temperature
+select w.Id from Weather w
+join Weather u on DATEDIFF(day,u.RecordDate,w.RecordDate)=1
+where w.Temperature>u.Temperature
