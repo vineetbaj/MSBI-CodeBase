@@ -126,3 +126,24 @@ DELETE p from Person p, Person q where p.Id>q.Id AND q.Email=p.Email
 select w.Id from Weather w
 join Weather u on DATEDIFF(day,u.RecordDate,w.RecordDate)=1
 where w.Temperature>u.Temperature
+
+--Trips and Users
+with cte as
+(select Request_at,
+        case 
+        when Driver_Id not in (select Users_id from Users where Banned='Yes') and Client_Id not in (select Users_id from Users where Banned='Yes') then 1
+		else 0 
+        end as 'tot',
+        case
+		when Status = 'cancelled_by_driver' 
+			 and Driver_Id not in (select Users_id from Users where Banned='Yes')
+			 and Client_Id not in (select Users_id from Users where Banned='Yes') then 1
+        when Status = 'cancelled_by_client'
+			 and Client_Id not in (select Users_id from Users where Banned='Yes')
+			 and Driver_Id not in (select Users_id from Users where Banned='Yes') then 1
+		else 0
+		end as 'castot'
+from Trips t)
+select Request_at as 'Day',cast (cast(sum(castot) as decimal(18,2))/cast(iif(sum(tot)<>0,sum(tot),1) as decimal(18,2))  as decimal(18,2))as 'Cancellation Rate' from cte
+group by Request_at
+having Request_at in ('2013-10-01','2013-10-02','2013-10-03')
