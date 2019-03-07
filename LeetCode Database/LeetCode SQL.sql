@@ -147,3 +147,9 @@ from Trips t)
 select Request_at as 'Day',cast (cast(sum(castot) as decimal(18,2))/cast(iif(sum(tot)<>0,sum(tot),1) as decimal(18,2))  as decimal(18,2))as 'Cancellation Rate' from cte
 group by Request_at
 having Request_at in ('2013-10-01','2013-10-02','2013-10-03')
+
+--Big Countries
+Select name Name, population Population, area Area
+from world
+where area > 3000000 or
+population > 25000000
