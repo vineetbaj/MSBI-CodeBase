@@ -148,8 +148,26 @@ select Request_at as 'Day',cast (cast(sum(castot) as decimal(18,2))/cast(iif(sum
 group by Request_at
 having Request_at in ('2013-10-01','2013-10-02','2013-10-03')
 
---Big Countries
+--Big Countries(MySQL)
 Select name Name, population Population, area Area
 from world
 where area > 3000000 or
 population > 25000000
+
+--Classes More Than 5 Students
+select class from (select distinct * from courses) f
+group by class
+having count(student)>=5
+
+--Exchange Seats
+;with cte as(
+select t1.id,case
+when 
+ t1.id % 2 =0 then t1.id-1
+ when exists (select 1 from seat t where t.id=t1.id+1) then t1.id+1 
+ else t1.id
+end as tid
+from seat t1
+) select c.id,u.student from cte c join 
+seat u on c.tid=u.id
+order by c.id
