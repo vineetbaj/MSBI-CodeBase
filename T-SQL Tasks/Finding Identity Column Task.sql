@@ -14,7 +14,6 @@ begin
 		insert into #table_name(dbname,tbl_schema,tbl_name)
 		SELECT TABLE_CATALOG,TABLE_SCHEMA,TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE'
 
-		--select * from #table_name
 		;with cte as(SELECT   OBJECT_NAME(OBJECT_ID) AS TABLENAME,
 			c.system_type_id,
 			c.user_type_id ,
@@ -34,9 +33,9 @@ begin
 			select TABLENAME,[Current Value],[Maximum Value] from cte
 	end
 	else
-	print 'Database doen not exists!!'
+	print 'Database does not exists!!'
 end
--------------------------------------------*-*-*---------------------------
+-----------------------------/*Execute Statement*\-----------------------------
 /*
 execute get_identity_inserts
 'AdventureWorksDW2016'
