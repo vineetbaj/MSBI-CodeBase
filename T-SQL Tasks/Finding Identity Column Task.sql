@@ -1,4 +1,7 @@
---To get table name, latest identity column value, Maximum value that can be entered
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------- LeetCode Problems ----------------------------------------------------
+-------------Purpose : To get table name, latest identity column value, Maximum value that can be entered----------------
+
 
 ALTER procedure [dbo].[get_identity_inserts]
 @database_name varchar(50)
@@ -18,8 +21,6 @@ begin
 			c.system_type_id,
 			c.user_type_id ,
              c.NAME AS COLUMNNAME, 
-             --SEED_VALUE, 
-             --INCREMENT_VALUE, 
              LAST_VALUE as [Current Value],
 			 case t.name
 			  when 'int' then '2,147,483,647'
