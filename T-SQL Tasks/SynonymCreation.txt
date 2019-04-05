@@ -1,0 +1,12 @@
+/**Process to create a synonym to a different server**/
+-------------------------------------------------------
+
+--create a linked server to that different server
+--here created a linked server "TEST_SYN" to AdventureWorksDW2014 database on that server.
+
+-- Statement to create a Synonym
+CREATE SYNONYM MyProduct
+FOR TEST_SYN.AdventureWorksDW2014.dbo.DimDate;
+GO
+
+select * from MyProduct
