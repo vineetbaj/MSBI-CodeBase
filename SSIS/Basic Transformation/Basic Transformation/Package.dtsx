@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="5"
-  DTS:VersionGUID="{C4039C47-75FE-482D-A2E6-65925F4ADD34}">
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{007A4FF0-057E-4E7C-87E9-7BC8814DBDB8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -691,7 +691,7 @@
         <NodeLayout
           Size="256,42"
           Id="Package\Loading data from flat file to sql table"
-          TopLeft="232,141" />
+          TopLeft="411,89" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -701,53 +701,55 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="151,42"
-          Id="Package\Loading data from flat file to sql table\Flat File Source"
-          TopLeft="264,65" />
+          Size="130,42"
+          Id="Package\Loading data from flat file to sql table\Union All 1"
+          TopLeft="581,271" />
         <NodeLayout
           Size="121,42"
           Id="Package\Loading data from flat file to sql table\Union All"
           TopLeft="302,249" />
         <NodeLayout
-          Size="130,42"
-          Id="Package\Loading data from flat file to sql table\Union All 1"
-          TopLeft="581,271" />
-        <NodeLayout
           Size="178,42"
           Id="Package\Loading data from flat file to sql table\Percentage Sampling"
           TopLeft="333,159" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Loading data from flat file to sql table\Flat File Source"
+          TopLeft="264,65" />
         <EdgeLayout
-          Id="Package\Loading data from flat file to sql table.Paths[Flat File Source Output]"
-          TopLeft="339.5,107">
+          Id="Package\Loading data from flat file to sql table.Paths[Sampling Unselected Output]"
+          TopLeft="450.333333333333,201">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="82.5,52"
+              EndConnector="195.666666666667,70"
               Start="0,0"
-              End="82.5,44.5">
+              End="195.666666666667,62.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,22" />
+                    End="0,24.3741648106904" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,22"
-                    Point2="0,26"
-                    Point3="4,26" />
+                    Point1="0,24.3741648106904"
+                    Point2="0,28.3741648106904"
+                    Point3="4,28.3741648106904" />
                   <mssgle:LineSegment
-                    End="78.5,26" />
+                    End="191.666666666667,28.3741648106904" />
                   <mssgle:CubicBezierSegment
-                    Point1="78.5,26"
-                    Point2="82.5,26"
-                    Point3="82.5,30" />
+                    Point1="191.666666666667,28.3741648106904"
+                    Point2="195.666666666667,28.3741648106904"
+                    Point3="195.666666666667,32.3741648106904" />
                   <mssgle:LineSegment
-                    End="82.5,44.5" />
+                    End="195.666666666667,62.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="25.6882942708333,33.3741648106904,144.290078125,16"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -787,39 +789,37 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Loading data from flat file to sql table.Paths[Sampling Unselected Output]"
-          TopLeft="450.333333333333,201">
+          Id="Package\Loading data from flat file to sql table.Paths[Flat File Source Output]"
+          TopLeft="339.5,107">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="195.666666666667,70"
+              EndConnector="82.5,52"
               Start="0,0"
-              End="195.666666666667,62.5">
+              End="82.5,44.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,24.3741648106904" />
+                    End="0,22" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,24.3741648106904"
-                    Point2="0,28.3741648106904"
-                    Point3="4,28.3741648106904" />
+                    Point1="0,22"
+                    Point2="0,26"
+                    Point3="4,26" />
                   <mssgle:LineSegment
-                    End="191.666666666667,28.3741648106904" />
+                    End="78.5,26" />
                   <mssgle:CubicBezierSegment
-                    Point1="191.666666666667,28.3741648106904"
-                    Point2="195.666666666667,28.3741648106904"
-                    Point3="195.666666666667,32.3741648106904" />
+                    Point1="78.5,26"
+                    Point2="82.5,26"
+                    Point3="82.5,30" />
                   <mssgle:LineSegment
-                    End="195.666666666667,62.5" />
+                    End="82.5,44.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="25.6882942708333,33.3741648106904,144.290078125,16"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
