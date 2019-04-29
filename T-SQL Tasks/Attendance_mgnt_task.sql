@@ -49,9 +49,9 @@ PIVOT
 group by cust_id,id,[in], [out] 
 
 
-select a.* from #n a
+--select a.* from #n a
  
- select * from #test
+-- select * from #test
 
 update a 
 set a.out = b.out
