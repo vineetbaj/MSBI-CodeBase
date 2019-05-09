@@ -30,10 +30,10 @@
 ----,(1,01,'2019-04-16 11:19:59.467')
 --drop table #n
 
-select row_number() over (partition by cust_id order by cust_id,[dates]) as id,cust_id,punch_type,dates into #test from #t
+select row_number() over (partition by cust_id order by cust_id,[dates]) as id,cust_id,punch_type,dates into #test from dbo.temp_hrms
 
 --/*Intro*/
---select t.* from #test t
+--select t.* from dbo.temp_hrms t
 --join #desc d on t.cust_id=d.cust_id
 
 SELECT  id,cust_id,
@@ -48,11 +48,6 @@ PIVOT
 ) AS PivotTable
 group by cust_id,id,[in], [out] 
 
-
---select a.* from #n a
- 
--- select * from #test
-
 update a 
 set a.out = b.out
 from #n a
@@ -61,13 +56,21 @@ left join #n b on a.id=b.id-1 and a.cust_id=b.cust_id
 delete from #n 
 where [in] is null and [out] is null
 
+-- Displaying results.
 ;with cte as
 (
- select *,DATEDIFF(MINUTE,[in],[out]) as [TT] from #n
-), cteb as (
- select cust_id,isnull(cast([in] as date),cast([out] as date)) as [dte],iif(
- sum(isnull(TT,-10000)) < 0,NULL,sum(TT)/60.00) as [tt],sum(TT)/60.00 as [actual] from cte
- group by  cust_id,isnull(cast([in] as date),cast([out] as date))
-)
+	select *,DATEDIFF(MINUTE,[in],[out]) as [TT] from #n
+), 
+cteb as (
+	select
+	 cust_id,
+	 isnull(cast([in] as date),cast([out] as date)) as [dte],
+	 isnull(cast(iif(sum(isnull(TT,-10000)) < 0,NULL,sum(TT)/60.00) as varchar(100)),'Need to be Regularised.') as [tt],
+	 isnull(cast(sum(TT)/60.00 as varchar(100)),'-')  as [Work hours inside office],
+	 min([in]) as [First in],
+	 max(out) as [Last out],
+	 isnull(cast(datediff(minute,min([in]),max([out]))/60.00 as varchar(100)),'Need to be Regularised') as [Total Work Hours]
+	 from cte
+	 group by  cust_id,isnull(cast([in] as date),cast([out] as date))
+	)
 select * from cteb
-
