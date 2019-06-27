@@ -30,23 +30,27 @@
 ----,(1,01,'2019-04-16 11:19:59.467')
 --drop table #n
 
-select row_number() over (partition by cust_id order by cust_id,[dates]) as id,cust_id,punch_type,dates into #test from dbo.temp_hrms
+select row_number() over (partition by cust_id order by cust_id,[dates]) as id,cust_id,punch_type,dates into #test 
+from dbo.temp_hrms
 
 --/*Intro*/
 --select t.* from dbo.temp_hrms t
 --join #desc d on t.cust_id=d.cust_id
 
 SELECT  id,cust_id,
-[in], [out] into #n
+[in], [out] 
+--into #n
 FROM
-(SELECT *
- FROM #test) AS SourceTable
+(SELECT top 100 percent *
+ FROM #test
+ order by cust_id,id) AS SourceTable
 PIVOT
 (
  min(dates)
  FOR punch_type IN ([in], [out])
 ) AS PivotTable
 group by cust_id,id,[in], [out] 
+
 
 update a 
 set a.out = b.out
@@ -55,7 +59,7 @@ left join #n b on a.id=b.id-1 and a.cust_id=b.cust_id
 
 delete from #n 
 where [in] is null and [out] is null
-
+select * from #n
 -- Displaying results.
 ;with cte as
 (
