@@ -7,7 +7,7 @@
   <ConnectionStringSecurity>Unchanged</ConnectionStringSecurity>
   <ImpersonationInfo>
     <ImpersonationMode>ImpersonateAccount</ImpersonationMode>
-    <Account>info\infoobjects</Account>
+    <Account>info\vineet</Account>
     <ImpersonationInfoSecurity>PasswordRemoved</ImpersonationInfoSecurity>
   </ImpersonationInfo>
   <Timeout>PT0S</Timeout>
