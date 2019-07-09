@@ -132,3 +132,27 @@ with cte as(
 )select distinct c.x,c.y from cte c join cte c2 on c.y=c2.x 
 where c2.y=c.x and c.rn<> c2.rn and c.x<=c.y
 order by c.x
+
+/*Print Prime Numbers*/
+DECLARE 
+@i INT, 
+@a INT, 
+@count INT, 
+@p varchar(max)
+SET @i = 1 
+WHILE (@i <= 1000) 
+BEGIN 
+	SET @count = 0 
+	SET @a = 1 
+	WHILE (@a <= @i) 
+	BEGIN 
+		IF (@i % @a = 0) 
+		SET @count = @count + 1 
+		SET @a = @a + 1 
+	END 
+	IF (@count = 2)
+	SET @P = CONCAT(@P,CONCAT(@i,'&')) 
+	SET @i = @i + 1 
+END
+PRINT LEFT(@P, LEN(@P) - 1)
+
