@@ -1,9 +1,9 @@
 USE <DATABASE_Name>
 GO
 
-SELECT      SCHEMA_NAME(A.schema_id) + '.' +
+SELECT      SCHEMA_NAME(A.schema_id) as [Schema_name],
         --A.Name, SUM(B.rows) AS 'RowCount'  Use AVG instead of SUM
-          A.Name, AVG(B.rows) AS 'RowCount'
+          A.Name as [Table_Name], AVG(B.rows) AS 'RowCount'
 FROM        sys.objects A
 INNER JOIN sys.partitions B ON A.object_id = B.object_id
 WHERE       A.type = 'U'
