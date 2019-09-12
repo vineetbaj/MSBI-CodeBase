@@ -1,0 +1,10 @@
+USE <DATABASE_Name>
+GO
+
+SELECT      SCHEMA_NAME(A.schema_id) + '.' +
+        --A.Name, SUM(B.rows) AS 'RowCount'  Use AVG instead of SUM
+          A.Name, AVG(B.rows) AS 'RowCount'
+FROM        sys.objects A
+INNER JOIN sys.partitions B ON A.object_id = B.object_id
+WHERE       A.type = 'U'
+GROUP BY    A.schema_id, A.Name
