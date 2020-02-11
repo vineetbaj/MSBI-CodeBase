@@ -41,6 +41,62 @@ ORDER BY con.contest_ID
 
 
 /*15 Days of Learning SQL*/
+/*
+drop table if exists hackers
+drop table if exists submissions
+
+create table hackers
+(
+hacker_id int ,
+[name] varchar(200)
+)
+
+create table submissions
+(
+submission_date date,
+submission_id int,
+hacker_id int,
+score int
+)
+
+insert into hackers
+(hacker_id,[name])
+ values
+(15758,'Rose'),
+(20703,'Angela'),
+(36396,'Frank'),
+(38289,'Patrick'),
+(44065,'Lisa'),
+(53473,'Kimberly'),
+(62529,'Bonnie'),
+(79722,'Michael')
+
+
+insert into submissions(submission_date,submission_id,hacker_id,score)
+values
+('2016-03-01',8494 ,20703,0 ),
+('2016-03-01',22403,53473,20),
+('2016-03-01',23965,79722,60),
+('2016-03-01',30173,36396,70),
+('2016-03-02',34928,20703,0	),
+('2016-03-02',38740,15758,60),
+('2016-03-02',42769,79722,25),
+('2016-03-02',44364,79722,60),
+('2016-03-03',45440,20703,0	),
+('2016-03-03',49050,36396,70),
+('2016-03-03',50273,79722,5	),
+('2016-03-04',50344,20703,0	),
+('2016-03-04',51360,44065,90),
+('2016-03-04',54404,53473,65),
+('2016-03-04',61533,79722,45),
+('2016-03-05',72852,20703,0	),
+('2016-03-05',74546,38289,0	),
+('2016-03-05',76487,62529,0	),
+('2016-03-05',82439,36396,10),
+('2016-03-05',90006,36396,40),
+('2016-03-06',90404,20703,0	),
+('2016-03-05',22403,53473,25)
+*/
 With rank_test as(
 	select h.hacker_id as id,[name] as [person_name],submission_date as [date_time],count(h.hacker_id) as marks from hackers h
     join submissions s on h.hacker_id=s.hacker_id
